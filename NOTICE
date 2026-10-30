@@ -1,0 +1,27 @@
+Kadllm
+
+Kadllm provides WideTuning for model adaptation and GRBeam for shared-prefix
+beam decoding and inference kernels.
+
+The Triton gated-delta kernel includes code derived from flash-linear-attention:
+https://github.com/fla-org/flash-linear-attention
+Copyright (c) 2023-2026 Songlin Yang, Yu Zhang, Zhiyuan Li
+MIT license: licenses/flash-linear-attention-MIT.txt
+
+The local modification reads the initial state by request index instead of
+beam index and omits final-state writes. The upstream authors do not endorse
+this package. The upstream dependency's current source is not needed at runtime.
+
+Optional FlashAttention is an external dependency, not vendored code:
+https://github.com/Dao-AILab/flash-attention
+
+This release contains mathematical building blocks, random-weight examples,
+and benchmark runners. It includes no pretrained weights or application data.
+
+The model-specific Qwen3.5 adapter follows projection and layer ordering from
+Hugging Face Transformers Qwen3.5 (Apache-2.0).
+Copyright 2025 The Qwen Team and The HuggingFace Inc. team.
+https://github.com/huggingface/transformers/tree/v5.8.1/src/transformers/models/qwen3_5
+License: licenses/transformers-Apache-2.0.txt
+Modifications provide immutable request-sized prefix storage and route suffix
+replay through GRBeam operators, with independently selectable backends.

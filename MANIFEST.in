@@ -1,0 +1,3 @@
+include LICENSE NOTICE README.md README.zh-CN.md
+recursive-include licenses *.txt
+recursive-include benchmarks *.py

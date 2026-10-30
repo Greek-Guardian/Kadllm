@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Kadllm"
+version = "0.1.0"
+description = "WideTuning FFN adaptation and GRBeam shared-prefix inference for generative retrieval"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["torch>=2.2"]
+
+[project.optional-dependencies]
+benchmark = ["transformers==5.20.2", "tokenizers", "safetensors"]
+cuda = ["triton>=3.0; platform_system == 'Linux'"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+license-files = ["LICENSE", "NOTICE", "licenses/*.txt"]
